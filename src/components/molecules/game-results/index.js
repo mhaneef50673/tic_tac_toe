@@ -2,6 +2,8 @@ import React from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Table from "react-bootstrap/Table";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrophy } from "@fortawesome/free-solid-svg-icons";
 
 import "./game-results.scss";
 
@@ -12,7 +14,12 @@ const GameResult = (props) => {
     <div className={BLOCK_NAME}>
       <div className="panel-wrapper">
         <div className="panel-container">
-          <h2>Leaderboard</h2>
+          <h2>
+            <span className="trophy-icon">
+              <FontAwesomeIcon color="#FFD700" icon={faTrophy} />
+            </span>
+            Leaderboard
+          </h2>
           <div className={`${BLOCK_NAME}_container`}>
             <Row>
               <Col>
