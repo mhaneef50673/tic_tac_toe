@@ -1,10 +1,19 @@
 import React from 'react';
+import { Switch, Route } from 'react-router-dom';
+import {
+  Home,
+  NotFound
+} from './components/pages';
+
 import './App.scss';
 
 function App() {
   return (
     <div className="App">
-      <header>Tic Tac Toe</header>
+      <Switch>
+        <Route path="/" component={Home} exact />
+        <Route path="*" component={NotFound} />
+      </Switch>
     </div>
   );
 }
