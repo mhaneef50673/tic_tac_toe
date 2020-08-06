@@ -3,6 +3,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
 import GameForm from "./game-form";
+import Alert from "../../atoms/alert";
 import "./game-widget.scss";
 
 const BLOCK_NAME = "game-widget";
@@ -17,11 +18,16 @@ const GameWidget = (props) => {
             <Row>
               <Col>
                 {props.isError && (
-                  <div className="alert error-info">
-                    Player one and Player two name cannot be same
-                  </div>
+                  <Alert
+                    type="error"
+                    msg="Player one and Player two name cannot be same"
+                  />
                 )}
-                <GameForm {...props} />
+                {props.shouldStartGame ? (
+                  <h1>Game Started </h1>
+                ) : (
+                  <GameForm {...props} />
+                )}
               </Col>
             </Row>
           </div>

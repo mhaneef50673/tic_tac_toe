@@ -5,7 +5,7 @@
   .input-text {
     width: 100%;
     margin-bottom: 1rem;
-    padding: .375rem .75rem;
+    padding: 0.375rem 0.75rem;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
@@ -13,24 +13,36 @@
     background-color: #fff;
     background-clip: padding-box;
     border: 1px solid #ced4da;
-    border-radius: .25rem;
+    border-radius: 0.25rem;
   }
-  .btn {
+  .btn-class {
     color: #fff;
-    background-color: #dc3545;
+    background-color: #dc3545 !important;
     border-color: #dc3545;
-    margin-left: 35%;
-  }
-  .error-info {
-    color: #721c24;
-    background-color: #f8d7da;
-    border-color: #f5c6cb;
-  }
-  .alert {
-    position: relative;
-    padding: .75rem 1.25rem;
-    margin-bottom: 1rem;
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    background-color: transparent;
     border: 1px solid transparent;
-    border-radius: .25rem;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+  }
+  .btn:hover {
+    background: #dc3545;
+  }
+  .btn:active:focus {
+    color: #ffffff;
+  }
+  .btn:focus {
+    background: #dc3545;
+    color: #ffffff;
+  }
+  .btn-center {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
   }
 }

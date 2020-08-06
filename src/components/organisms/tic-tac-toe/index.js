@@ -13,6 +13,7 @@ export default class TicTacToe extends React.Component {
     playerOne: "",
     playerTwo: "",
     isError: false,
+    shouldStartGame: false,
   };
 
   onInputChange = (e, inputName) => {
@@ -28,25 +29,31 @@ export default class TicTacToe extends React.Component {
       this.setState({
         isError: true,
       });
+    } else {
+      this.setState({
+        shouldStartGame: true,
+        isError: false,
+      })
     }
   };
 
   render() {
-    const { playerOne, playerTwo, isError } = this.state;
+    const { playerOne, playerTwo, isError, shouldStartGame } = this.state;
     return (
       <Container fluid className="main-container">
         <h1>Tic Tac Toe</h1>
         <Row>
-          <Col sm={6}>
+          <Col lg={6}>
             <GameWidget
               playerOne={playerOne}
               playerTwo={playerTwo}
               onInputChange={this.onInputChange}
               onGameStartHandler={this.onGameStartHandler}
               isError={isError}
+              shouldStartGame={shouldStartGame}
             />
           </Col>
-          <Col sm={6}>
+          <Col lg={6}>
             <GameResults />
           </Col>
         </Row>

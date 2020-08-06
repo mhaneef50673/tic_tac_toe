@@ -22,9 +22,11 @@ const GameForm = (props) => {
         value={playerTwo}
         required
       />
-      <button className="btn" type="submit">
-        Start Game
-      </button>
+      <div className="btn-center ">
+        <button className="btn-class" type="submit">
+          Start Game
+        </button>
+      </div>
     </form>
   );
 };
