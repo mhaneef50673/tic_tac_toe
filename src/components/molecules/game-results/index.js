@@ -14,7 +14,8 @@ const GameResult = (props) => {
           <h2>Game Result</h2>
           <div className={`${BLOCK_NAME}_container`}>
             <Row>
-              <Col></Col>
+              <Col>
+              </Col>
             </Row>
           </div>
         </div>

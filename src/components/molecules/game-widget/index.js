@@ -2,7 +2,8 @@ import React from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-import './game-widget.scss';
+import GameForm from "./game-form";
+import "./game-widget.scss";
 
 const BLOCK_NAME = "game-widget";
 
@@ -14,7 +15,14 @@ const GameWidget = (props) => {
           <h2>Game</h2>
           <div className={`${BLOCK_NAME}_container`}>
             <Row>
-              <Col></Col>
+              <Col>
+                {props.isError && (
+                  <div className="alert error-info">
+                    Player one and Player two name cannot be same
+                  </div>
+                )}
+                <GameForm {...props} />
+              </Col>
             </Row>
           </div>
         </div>

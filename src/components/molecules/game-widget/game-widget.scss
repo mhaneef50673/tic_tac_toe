@@ -1,3 +1,36 @@
 .game-widget {
-
+  .input-label {
+    width: 100%;
+  }
+  .input-text {
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+  }
+  .btn {
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+    margin-left: 35%;
+  }
+  .error-info {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+  }
+  .alert {
+    position: relative;
+    padding: .75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+  }
 }
