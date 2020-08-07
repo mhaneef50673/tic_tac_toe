@@ -17,8 +17,8 @@
   }
   .btn-class {
     color: #fff;
-    background-color: #dc3545 !important;
-    border-color: #dc3545;
+    background-color: #c60c30 !important;
+    border-color: #c60c30;
     display: inline-block;
     font-weight: 400;
     text-align: center;
@@ -30,13 +30,13 @@
     border-radius: 0.25rem;
   }
   .btn:hover {
-    background: #dc3545;
+    background: #c60c30;
   }
   .btn:active:focus {
     color: #ffffff;
   }
   .btn:focus {
-    background: #dc3545;
+    background: #c60c30;
     color: #ffffff;
   }
   .btn-center {
@@ -44,5 +44,69 @@
     width: 100%;
     justify-content: center;
     align-items: center;
+  }
+  .game {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .game-info {
+    margin-left: 20px;
+  }
+  .square-row-container:after {
+    clear: both;
+    content: "";
+    display: table;
+  }
+  .game-container {
+    h3 {
+      text-align: center;
+      margin-bottom: 15px;
+      font-size: 1.2rem;
+    }
+  }
+  .game-started {
+    animation: blinker 1s linear infinite;
+    font-style: italic;
+    color: #c60c30;
+  }
+  @keyframes blinker {
+    50% {
+      opacity: 0;
+    }
+  }
+  .game-next-turn {
+    text-align: center;
+    margin-top: 10px;
+  }
+  .game-over {
+    margin: auto !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    h3 {
+      margin-bottom: 0px !important;
+      padding-top: 5px;
+    }
+  }
+  .winner-trophy-icon {
+    padding-left: 10px;
+    font-size: 25px;
+  }
+  .underline-btn-class {
+    color: #c60c30 !important;
+    text-decoration: underline;
+    margin: 10px;
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
   }
 }

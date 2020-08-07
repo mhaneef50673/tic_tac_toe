@@ -10,40 +10,44 @@ import "./game-results.scss";
 const BLOCK_NAME = "game-results";
 
 const GameResult = (props) => {
+  const { results } = props;
   return (
     <div className={BLOCK_NAME}>
       <div className="panel-wrapper">
         <div className="panel-container">
           <h2>
+            Leaderboard
             <span className="trophy-icon">
               <FontAwesomeIcon color="#FFD700" icon={faTrophy} />
             </span>
-            Leaderboard
           </h2>
           <div className={`${BLOCK_NAME}_container`}>
             <Row>
               <Col>
-                <Table striped bordered hover>
-                  <thead>
-                    <tr>
-                      <th>#</th>
-                      <th>Name</th>
-                      <th>Points</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>Haneef</td>
-                      <td>2</td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>Sumi</td>
-                      <td>5</td>
-                    </tr>
-                  </tbody>
-                </Table>
+                {results.length > 0 ? (
+                  <Table striped bordered hover>
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Points</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {results.map((result, index) => 
+                        (
+                          <tr key={index}>
+                            <td>{index}</td>
+                            <td>{result.name}</td>
+                            <td>{result.points}</td>
+                          </tr>
+                        )
+                      )}
+                    </tbody>
+                  </Table>
+                ) : (
+                  <h3 style={{ textAlign: "center" }}> No results to show </h3>
+                )}
               </Col>
             </Row>
           </div>

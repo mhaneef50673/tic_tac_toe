@@ -1,63 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
 import GameWidget from "../../molecules/game-widget";
 import GameResults from "../../molecules/game-results";
+import { getLeaderboardFromStorage, setLeaderboardToStorage } from './helper';
 
 import "./tic-tac-toe.scss";
 
-export default class TicTacToe extends React.Component {
-  state = {
-    playerOne: "",
-    playerTwo: "",
-    isError: false,
-    shouldStartGame: false,
-  };
+const TicTacToe = () => {
 
-  onInputChange = (e, inputName) => {
-    this.setState({
-      [inputName]: e.target.value,
-    });
-  };
+  const [ leaderBoard, changeLeaderBoard ] = useState(getLeaderboardFromStorage());
 
-  onGameStartHandler = (event) => {
-    event.preventDefault();
-    const { playerOne, playerTwo } = this.state;
-    if (playerOne === playerTwo) {
-      this.setState({
-        isError: true,
-      });
-    } else {
-      this.setState({
-        shouldStartGame: true,
-        isError: false,
-      })
-    }
-  };
-
-  render() {
-    const { playerOne, playerTwo, isError, shouldStartGame } = this.state;
-    return (
-      <Container fluid className="main-container">
-        <h1>Tic Tac Toe</h1>
-        <Row>
-          <Col lg={6}>
-            <GameWidget
-              playerOne={playerOne}
-              playerTwo={playerTwo}
-              onInputChange={this.onInputChange}
-              onGameStartHandler={this.onGameStartHandler}
-              isError={isError}
-              shouldStartGame={shouldStartGame}
-            />
-          </Col>
-          <Col lg={6}>
-            <GameResults />
-          </Col>
-        </Row>
-      </Container>
-    );
+  const onGameOver = (playerOne, playerTwo, wonBy) => {
+    const results = setLeaderboardToStorage(playerOne, playerTwo, wonBy);
+    changeLeaderBoard(results);
   }
-}
+
+  return (
+    <Container fluid className="main-container">
+      <h1>Tic Tac Toe</h1>
+      <Row>
+        <Col lg={6}>
+          <GameWidget onGameOver={onGameOver} />
+        </Col>
+        <Col lg={6}>
+          <GameResults results={leaderBoard}/>
+        </Col>
+      </Row>
+    </Container>
+  );
+};
+
+export default TicTacToe;

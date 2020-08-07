@@ -1,0 +1,25 @@
+.board-square {
+  background: #fff;
+  border: 1px solid #999;
+  float: left;
+  font-size: 30px;
+  font-weight: bold;
+  line-height: 34px;
+  height: 75px;
+  margin-right: -1px;
+  margin-top: -1px;
+  padding: 0;
+  text-align: center;
+  width: 75px;
+  font-style: italic;
+  color: #c60c30;
+
+  @media (min-width: 786px) {
+    width: 100px;
+    height: 100px;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
