@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Alert Component should render the component 1`] = `
+<Alert
+  msg="test message"
+  type="error"
+>
+  <div
+    className="alert error"
+  >
+    test message
+  </div>
+</Alert>
+`;
