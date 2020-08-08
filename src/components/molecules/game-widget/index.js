@@ -1,4 +1,5 @@
 import React from "react";
+import Proptypes from 'prop-types';
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
@@ -11,8 +12,8 @@ const BLOCK_NAME = "game-widget";
 
 export default class GameWidget extends React.Component {
   state = {
-    playerOne: "Player1",
-    playerTwo: "Player2",
+    playerOne: "",
+    playerTwo: "",
     isError: false,
     shouldStartGame: false,
   };
@@ -87,4 +88,8 @@ export default class GameWidget extends React.Component {
       </div>
     );
   }
+}
+
+GameWidget.propTypes = {
+  onGameOver: Proptypes.func,
 }

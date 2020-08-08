@@ -1,8 +1,10 @@
 import React from "react";
+import PropTypes from 'prop-types';
+
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Table from "react-bootstrap/Table";
-import Alert from "react-bootstrap/Alert";
+import Alert from '../../atoms/alert';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrophy, faSpinner } from "@fortawesome/free-solid-svg-icons";
 
@@ -34,9 +36,12 @@ const GameResult = (props) => {
                   </div>
                 )}
                 {isError && (
-                  <Alert variant="danger">Error while fetching Leaderboard</Alert>
+                  <Alert
+                    type="error"
+                    msg="Error while fetching Leaderboard"
+                  />
                 )}
-                {!isFetching && (
+                {(!isFetching && !isError) && (
                   <React.Fragment>
                     {results.length > 0 ? (
                       <Table striped bordered hover>
@@ -73,5 +78,14 @@ const GameResult = (props) => {
     </div>
   );
 };
+
+GameResult.propTypes = {
+  results: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string,
+    points: PropTypes.number,
+  })),
+  isFetching: PropTypes.bool,
+  isError: PropTypes.bool,
+}
 
 export default GameResult;

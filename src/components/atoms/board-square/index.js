@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 
 import './board-square.scss';
 
@@ -12,5 +13,11 @@ const BoardSquare = (props) => {
     </button>
   );
 };
+
+BoardSquare.propTypes = {
+  isWinning: PropTypes.bool,
+  squareValue: PropTypes.number,
+  squareClickHanlder: PropTypes.func,
+}
 
 export default BoardSquare;

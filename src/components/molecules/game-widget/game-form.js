@@ -1,4 +1,5 @@
 import React from "react";
+import Proptypes from "prop-types";
 
 const GameForm = (props) => {
   const { playerOne, playerTwo, onInputChange, onGameStartHandler } = props;
@@ -29,6 +30,13 @@ const GameForm = (props) => {
       </div>
     </form>
   );
+};
+
+GameForm.propTypes = {
+  playerOne: Proptypes.string,
+  playerTwo: Proptypes.string,
+  onInputChange: Proptypes.func,
+  onGameStartHandler: Proptypes.func,
 };
 
 export default GameForm;

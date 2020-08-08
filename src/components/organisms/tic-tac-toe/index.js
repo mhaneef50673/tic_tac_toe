@@ -28,14 +28,17 @@ const TicTacToe = () => {
         method: "GET",
       },
       getLeaderboardUrl
-    ).then((data) => {
-      changeIsLeaderboardFetching(false);
-      if (data && data.leaderboard) {
-        changeLeaderBoard(data.leaderboard);
-      } else {
+    )
+      .then((data) => {
+        changeIsLeaderboardFetching(false);
+        if (data && data.leaderboard) {
+          changeLeaderBoard(data.leaderboard);
+        }
+      })
+      .catch(() => {
+        changeIsLeaderboardFetching(false);
         changeIsFetchingFailed(true);
-      }
-    });
+      });
   }, []);
 
   return (

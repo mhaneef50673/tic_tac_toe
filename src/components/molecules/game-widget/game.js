@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrophy } from "@fortawesome/free-solid-svg-icons";
 
@@ -110,8 +111,8 @@ export default class Game extends React.Component {
             <div className="game-next-turn">
               <div>
                 {!gameStatus ? (
-                  <span>
-                    {`Next turn ${isPlayerOneNext ? playerOne : playerTwo}`}
+                  <span style={{ fontWeight: "bold", fontStyle: "italic"}}>
+                    {`Next turn: ${isPlayerOneNext ? playerOne : playerTwo}`}
                   </span>
                 ) : (
                   <h3>Game Over !!</h3>
@@ -124,3 +125,9 @@ export default class Game extends React.Component {
     );
   }
 }
+
+Game.propTypes = {
+  playerOne: PropTypes.string,
+  playerTwo: PropTypes.string,
+  onGameOver: PropTypes.func,
+};

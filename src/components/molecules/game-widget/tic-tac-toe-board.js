@@ -1,9 +1,16 @@
 import React from "react";
+import Proptypes from "prop-types";
 
 import BoardSquare from "../../atoms/board-square";
 
 const TicTacToeBoard = (props) => {
-  const { noOfRows, noOfColumns, squares, squareClickHanlder, winningSquares } = props;
+  const {
+    noOfRows,
+    noOfColumns,
+    squares,
+    squareClickHanlder,
+    winningSquares,
+  } = props;
   const renderSquare = (index) => {
     return (
       <BoardSquare
@@ -28,6 +35,14 @@ const TicTacToeBoard = (props) => {
       })}
     </div>
   );
+};
+
+TicTacToeBoard.propTypes = {
+  noOfRows: Proptypes.number,
+  noOfColumns: Proptypes.number,
+  squares: Proptypes.arrayOf(Proptypes.number),
+  squareClickHanlder: Proptypes.func,
+  winningSquares: Proptypes.arrayOf(Proptypes.number),
 };
 
 export default TicTacToeBoard;
