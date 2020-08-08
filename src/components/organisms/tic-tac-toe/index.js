@@ -1,22 +1,42 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
 import GameWidget from "../../molecules/game-widget";
 import GameResults from "../../molecules/game-results";
-import { getLeaderboardFromStorage, setLeaderboardToStorage } from './helper';
+import { saveLeaderboard } from "./helper";
+
+import { getLeaderboardUrl } from "../../../core/api/endpoints";
+import { fetchData } from "../../../core/api";
 
 import "./tic-tac-toe.scss";
 
 const TicTacToe = () => {
-
-  const [ leaderBoard, changeLeaderBoard ] = useState(getLeaderboardFromStorage());
+  const [leaderBoard, changeLeaderBoard] = useState([]);
+  const [isLeaderboardFetching, changeIsLeaderboardFetching] = useState(true);
+  const [isFetchingFailed, changeIsFetchingFailed] = useState(false);
 
   const onGameOver = (playerOne, playerTwo, wonBy) => {
-    const results = setLeaderboardToStorage(playerOne, playerTwo, wonBy);
-    changeLeaderBoard(results);
-  }
+    const results = saveLeaderboard(leaderBoard, playerOne, playerTwo, wonBy);
+    changeLeaderBoard([...results]);
+  };
+
+  useEffect(() => {
+    fetchData(
+      {
+        method: "GET",
+      },
+      getLeaderboardUrl
+    ).then((data) => {
+      changeIsLeaderboardFetching(false);
+      if (data && data.leaderboard) {
+        changeLeaderBoard(data.leaderboard);
+      } else {
+        changeIsFetchingFailed(true);
+      }
+    });
+  }, []);
 
   return (
     <Container fluid className="main-container">
@@ -26,7 +46,11 @@ const TicTacToe = () => {
           <GameWidget onGameOver={onGameOver} />
         </Col>
         <Col lg={6}>
-          <GameResults results={leaderBoard}/>
+          <GameResults
+            results={leaderBoard}
+            isFetching={isLeaderboardFetching}
+            isError={isFetchingFailed}
+          />
         </Col>
       </Row>
     </Container>

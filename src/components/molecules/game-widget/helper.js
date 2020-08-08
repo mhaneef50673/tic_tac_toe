@@ -1,4 +1,4 @@
-import { ROW_COUNT, COL_COUNT } from './constants';
+import { ROW_COUNT, COL_COUNT } from '../../../constants';
 
 const getHorizontalWinningCombination = () => {
   const totalHorizontalCombination = (ROW_COUNT * COL_COUNT) / COL_COUNT;

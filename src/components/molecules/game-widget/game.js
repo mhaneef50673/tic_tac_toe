@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrophy } from "@fortawesome/free-solid-svg-icons";
 
 import { calculateWinner } from "./helper";
-import { ROW_COUNT, COL_COUNT } from "./constants";
+import { ROW_COUNT, COL_COUNT } from "../../../constants";
 import TicTacToeBoard from "./tic-tac-toe-board";
 
 export default class Game extends React.Component {
@@ -31,7 +31,9 @@ export default class Game extends React.Component {
         winningSquares: wonBy ? wonBy.winningSquares : [],
       },
       () => {
-        onGameOver(playerOne, playerTwo, wonBy);
+        if (wonBy) {
+          onGameOver(playerOne, playerTwo, wonBy.playerName);
+        }
       }
     );
   };

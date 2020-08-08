@@ -1,24 +1,25 @@
 import findIndex from "lodash/findIndex";
 
-export const getLeaderboardFromStorage = () => {
-  const data = JSON.parse(localStorage.getItem("ticTacToeLeaderboard"));
-  if (data) {
-    return data;
-  }
-  return [];
+import { saveLeaderboardUrl } from "../../../core/api/endpoints";
+import { fetchData } from "../../../core/api";
+
+export const postData = (postData) => {
+  const requestOptions = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(postData),
+  };
+  return fetchData(requestOptions, saveLeaderboardUrl).then((results) => {
+    console.log(results);
+  });
 };
 
-export const setLeaderboardToStorage = (playerOne, playerTwo, wonBy) => {
-  const data = localStorage.getItem("ticTacToeLeaderboard")
-    ? JSON.parse(localStorage.getItem("ticTacToeLeaderboard"))
-    : [];
-  const existingPlayerOneIndex = findIndex(
-    data,
-    (val) => val.name === playerOne ? true: false
+export const saveLeaderboard = (data, playerOne, playerTwo, wonBy) => {
+  const existingPlayerOneIndex = findIndex(data, (val) =>
+    val.name === playerOne ? true : false
   );
-  const existingPlayerTwoIndex = findIndex(
-    data,
-    (val) => val.name === playerTwo ? true: false
+  const existingPlayerTwoIndex = findIndex(data, (val) =>
+    val.name === playerTwo ? true : false
   );
   if (existingPlayerOneIndex > -1) {
     const existingPlayerOneResult = data[existingPlayerOneIndex];
@@ -42,6 +43,8 @@ export const setLeaderboardToStorage = (playerOne, playerTwo, wonBy) => {
       points: wonBy === playerTwo ? 1 : 0,
     });
   }
-  localStorage.setItem("ticTacToeLeaderboard", JSON.stringify(data));
+
+  // post data to sever
+  postData(data);
   return data;
 };
