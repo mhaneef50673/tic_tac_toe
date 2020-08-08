@@ -3,36 +3,44 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrophy } from "@fortawesome/free-solid-svg-icons";
 
 import { calculateWinner } from "./helper";
-import { ROW_COUNT, COL_COUNT } from './constants';
+import { ROW_COUNT, COL_COUNT } from "./constants";
 import TicTacToeBoard from "./tic-tac-toe-board";
 
 export default class Game extends React.Component {
   state = {
     squares: Array(9).fill(null),
     isPlayerOneNext: true,
+    winningSquares: [],
   };
 
   squareClickHanlder = (clickedSquaredIndex) => {
     const { squares, isPlayerOneNext } = this.state;
     const { playerOne, playerTwo, onGameOver } = this.props;
-    if (squares[clickedSquaredIndex]) {
+    if (
+      squares[clickedSquaredIndex] ||
+      calculateWinner(squares, playerOne, playerTwo)
+    ) {
       return;
     }
     squares[clickedSquaredIndex] = isPlayerOneNext ? "X" : "O";
-    this.setState({
-      squares,
-      isPlayerOneNext: !isPlayerOneNext,
-    });
     const wonBy = calculateWinner(squares, playerOne, playerTwo);
-    if (wonBy) {
-      onGameOver(playerOne, playerTwo, wonBy);
-    }
+    this.setState(
+      {
+        squares,
+        isPlayerOneNext: !isPlayerOneNext,
+        winningSquares: wonBy ? wonBy.winningSquares : [],
+      },
+      () => {
+        onGameOver(playerOne, playerTwo, wonBy);
+      }
+    );
   };
 
   resetState = () => {
     this.setState({
       squares: Array(9).fill(null),
       isPlayerOneNext: true,
+      winningSquares: [],
     });
   };
 
@@ -45,8 +53,21 @@ export default class Game extends React.Component {
     this.props.resetGameState();
   };
 
+  renderBtns = () => {
+    return (
+      <div className="centered">
+        <button className="underline-btn-class" onClick={this.handleRematch}>
+          Re-match
+        </button>
+        <button className="underline-btn-class" onClick={this.handleNewMatch}>
+          New Game
+        </button>
+      </div>
+    );
+  };
+
   render() {
-    const { squares, isPlayerOneNext } = this.state;
+    const { squares, isPlayerOneNext, winningSquares } = this.state;
     const { playerOne, playerTwo } = this.props;
     const wonBy = calculateWinner(squares, playerOne, playerTwo);
     let gameStatus = null;
@@ -59,49 +80,43 @@ export default class Game extends React.Component {
     return (
       <div className="game">
         <div className="game-container">
-          {gameStatus ? (
+          {gameStatus && (
             <div>
               <span className="game-over">
                 {gameStatus === "draw" ? (
                   <h3>Oops, its a draw !!</h3>
                 ) : (
                   <React.Fragment>
-                    <h3>Winner is {wonBy}</h3>
+                    <h3>Winner is {wonBy.playerName}</h3>
                     <span className="winner-trophy-icon">
                       <FontAwesomeIcon color="#FFD700" icon={faTrophy} />
                     </span>
                   </React.Fragment>
                 )}
               </span>
-              <button
-                className="underline-btn-class"
-                onClick={this.handleRematch}
-              >
-                Re-match
-              </button>
-              <button
-                className="underline-btn-class"
-                onClick={this.handleNewMatch}
-              >
-                New Game
-              </button>
+              {this.renderBtns()}
             </div>
-          ) : (
-            <React.Fragment>
-              <h3 className="game-started">!! Game Started !!</h3>
-              <TicTacToeBoard
-                squares={squares}
-                squareClickHanlder={(i) => this.squareClickHanlder(i)}
-                noOfRows={ROW_COUNT}
-                noOfColumns={COL_COUNT}
-              />
-              <div className="game-next-turn">
-                <div>{`Next turn: ${
-                  isPlayerOneNext ? playerOne : playerTwo
-                }`}</div>
-              </div>
-            </React.Fragment>
           )}
+          <React.Fragment>
+            <TicTacToeBoard
+              squares={squares}
+              squareClickHanlder={(i) => this.squareClickHanlder(i)}
+              noOfRows={ROW_COUNT}
+              noOfColumns={COL_COUNT}
+              winningSquares={winningSquares}
+            />
+            <div className="game-next-turn">
+              <div>
+                {!gameStatus ? (
+                  <span>
+                    {`Next turn ${isPlayerOneNext ? playerOne : playerTwo}`}
+                  </span>
+                ) : (
+                  <h3>Game Over !!</h3>
+                )}
+              </div>
+            </div>
+          </React.Fragment>
         </div>
       </div>
     );

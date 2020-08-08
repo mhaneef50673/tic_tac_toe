@@ -3,13 +3,14 @@ import React from "react";
 import BoardSquare from "../../atoms/board-square";
 
 const TicTacToeBoard = (props) => {
-  const { noOfRows, noOfColumns, squares, squareClickHanlder } = props;
+  const { noOfRows, noOfColumns, squares, squareClickHanlder, winningSquares } = props;
   const renderSquare = (index) => {
     return (
       <BoardSquare
         key={index}
         squareValue={squares[index]}
         squareClickHanlder={() => squareClickHanlder(index)}
+        isWinning={winningSquares.includes(index)}
       />
     );
   };

@@ -23,3 +23,13 @@
     outline: none;
   }
 }
+.winning-square {
+  background-color: #c60c30;
+  color: white;
+  animation: blinker 1.5s linear infinite;
+}
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}

@@ -68,7 +68,10 @@ export const calculateWinner = (squares, playerOne, playerTwo) => {
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      return squares[a] === "X" ? playerOne : playerTwo;
+      return {
+        playerName : squares[a] === "X" ? playerOne : playerTwo,
+        winningSquares: lines[i],
+      };
     }
   }
   return null;
