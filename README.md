@@ -6,6 +6,13 @@ This project has been deployed in heroku cloud.
 
 Click on this [Live Demo](https://haneef-tic-tac-toe.herokuapp.com/) to access the project in heroku cloud.
 
+## Screenshot
+
+<img src="https://user-images.githubusercontent.com/31245872/89727561-2494a800-da37-11ea-8690-86398d27e317.png">
+<img src="https://user-images.githubusercontent.com/31245872/89727567-36764b00-da37-11ea-9911-4c0d07c17cf0.png">
+<img src="https://user-images.githubusercontent.com/31245872/89727575-4aba4800-da37-11ea-8656-6dbea6e84690.png">
+
+
 ## Project Structure
 
 This project is using [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/)
