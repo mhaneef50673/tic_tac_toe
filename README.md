@@ -36,6 +36,8 @@ This project uses [Jest](https://jestjs.io/) and [Enzyme](https://enzymejs.githu
 
 In the project directory, you can run:
 
+### `npm install`
+
 ### `npm run dev`
 
 or
