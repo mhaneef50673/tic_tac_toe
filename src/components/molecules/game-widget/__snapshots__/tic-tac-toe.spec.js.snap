@@ -1,0 +1,140 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TicTacToeBoard Component should render the component 1`] = `
+<TicTacToeBoard
+  noOfColumns={3}
+  noOfRows={3}
+  squareClickHanlder={[Function]}
+  squares={
+    Array [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+    ]
+  }
+  winningSquares={Array []}
+>
+  <div>
+    <div
+      className="square-row-container"
+      key="0"
+    >
+      <BoardSquare
+        isWinning={false}
+        key="0"
+        squareClickHanlder={[Function]}
+        squareValue={null}
+      >
+        <button
+          className="board-square "
+          onClick={[Function]}
+        />
+      </BoardSquare>
+      <BoardSquare
+        isWinning={false}
+        key="1"
+        squareClickHanlder={[Function]}
+        squareValue={null}
+      >
+        <button
+          className="board-square "
+          onClick={[Function]}
+        />
+      </BoardSquare>
+      <BoardSquare
+        isWinning={false}
+        key="2"
+        squareClickHanlder={[Function]}
+        squareValue={null}
+      >
+        <button
+          className="board-square "
+          onClick={[Function]}
+        />
+      </BoardSquare>
+    </div>
+    <div
+      className="square-row-container"
+      key="1"
+    >
+      <BoardSquare
+        isWinning={false}
+        key="3"
+        squareClickHanlder={[Function]}
+        squareValue={null}
+      >
+        <button
+          className="board-square "
+          onClick={[Function]}
+        />
+      </BoardSquare>
+      <BoardSquare
+        isWinning={false}
+        key="4"
+        squareClickHanlder={[Function]}
+        squareValue={null}
+      >
+        <button
+          className="board-square "
+          onClick={[Function]}
+        />
+      </BoardSquare>
+      <BoardSquare
+        isWinning={false}
+        key="5"
+        squareClickHanlder={[Function]}
+        squareValue={null}
+      >
+        <button
+          className="board-square "
+          onClick={[Function]}
+        />
+      </BoardSquare>
+    </div>
+    <div
+      className="square-row-container"
+      key="2"
+    >
+      <BoardSquare
+        isWinning={false}
+        key="6"
+        squareClickHanlder={[Function]}
+        squareValue={null}
+      >
+        <button
+          className="board-square "
+          onClick={[Function]}
+        />
+      </BoardSquare>
+      <BoardSquare
+        isWinning={false}
+        key="7"
+        squareClickHanlder={[Function]}
+        squareValue={null}
+      >
+        <button
+          className="board-square "
+          onClick={[Function]}
+        />
+      </BoardSquare>
+      <BoardSquare
+        isWinning={false}
+        key="8"
+        squareClickHanlder={[Function]}
+        squareValue={null}
+      >
+        <button
+          className="board-square "
+          onClick={[Function]}
+        />
+      </BoardSquare>
+    </div>
+  </div>
+</TicTacToeBoard>
+`;

@@ -50,7 +50,7 @@ const getDiagonalWinningCombination = () => {
  * if the board is 3x3, then it will return array of 8 length  = 3 (rows) + 3 (columns) + 2 (diagonals)
  * if the board is 4x4, then it will return array of 10 length = 4 (rows) + 4 (columns) + 2 (diagonals)
  */
-const getPossibleWinningCombination = () => {
+export const getPossibleWinningCombination = () => {
   const horizontalWinningCombination = getHorizontalWinningCombination();
   const verticalWinningCombination = getVerticalWinningCombination();
   const diagonalWinningCombination = getDiagonalWinningCombination();

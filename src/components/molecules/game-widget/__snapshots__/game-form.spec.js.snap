@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GameForm Component should render the component 1`] = `
+<GameForm
+  onGameStartHandler={[Function]}
+  onInputChange={[Function]}
+  playerOne="player1"
+  playerTwo="player2"
+>
+  <form
+    onSubmit={[Function]}
+  >
+    <label
+      className="input-label"
+    >
+      Player one Name
+    </label>
+    <input
+      className="input-text"
+      onChange={[Function]}
+      placeholder="Enter player one name"
+      required={true}
+      type="text"
+      value="player1"
+    />
+    <label
+      className="input-label"
+    >
+      Player two Name
+    </label>
+    <input
+      className="input-text"
+      onChange={[Function]}
+      placeholder="Enter player two name"
+      required={true}
+      type="text"
+      value="player2"
+    />
+    <div
+      className="btn-center "
+    >
+      <button
+        className="btn-class"
+        type="submit"
+      >
+        Start Game
+      </button>
+    </div>
+  </form>
+</GameForm>
+`;

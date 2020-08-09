@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`onGameOver Component should render the component 1`] = `
+<GameWidget
+  onGameOver={[Function]}
+>
+  <div
+    className="game-widget"
+  >
+    <div
+      className="panel-wrapper"
+    >
+      <div
+        className="panel-container"
+      >
+        <h2>
+          Game
+        </h2>
+        <div
+          className="game-widget_container"
+        >
+          <Row
+            noGutters={false}
+          >
+            <div
+              className="row"
+            >
+              <Col>
+                <div
+                  className="col"
+                >
+                  <GameForm
+                    isError={false}
+                    onGameStartHandler={[Function]}
+                    onInputChange={[Function]}
+                    playerOne=""
+                    playerTwo=""
+                    shouldStartGame={false}
+                  >
+                    <form
+                      onSubmit={[Function]}
+                    >
+                      <label
+                        className="input-label"
+                      >
+                        Player one Name
+                      </label>
+                      <input
+                        className="input-text"
+                        onChange={[Function]}
+                        placeholder="Enter player one name"
+                        required={true}
+                        type="text"
+                        value=""
+                      />
+                      <label
+                        className="input-label"
+                      >
+                        Player two Name
+                      </label>
+                      <input
+                        className="input-text"
+                        onChange={[Function]}
+                        placeholder="Enter player two name"
+                        required={true}
+                        type="text"
+                        value=""
+                      />
+                      <div
+                        className="btn-center "
+                      >
+                        <button
+                          className="btn-class"
+                          type="submit"
+                        >
+                          Start Game
+                        </button>
+                      </div>
+                    </form>
+                  </GameForm>
+                </div>
+              </Col>
+            </div>
+          </Row>
+        </div>
+      </div>
+    </div>
+  </div>
+</GameWidget>
+`;
